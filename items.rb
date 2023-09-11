@@ -1,5 +1,5 @@
 class Items
-  attr_accessor :genre, :author, :source, :label, :publish_date, :archived
+  attr_accessor :genre, :author, :source, :label, :publish_date
 
   def initialize(genre, author, source, label, publish_date)
     @id = Random.rand(1..1_000)
@@ -25,5 +25,4 @@ class Items
     year_diff > 10
   end
 
-  private :archived, :id
 end
