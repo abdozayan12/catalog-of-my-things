@@ -1,7 +1,4 @@
-# frozen_string_literal: true
-
 require_relative 'menu'
-
 
 menu = Menu.new
 

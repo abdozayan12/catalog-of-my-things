@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Menu
   def display_options
     puts 'Select an option :'
