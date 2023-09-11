@@ -24,5 +24,4 @@ class Items
     year_diff = (today.year - publish_date.year).abs
     year_diff > 10
   end
-
 end
