@@ -5,10 +5,10 @@ class Game < Items
   attr_reader :games
 
   @games = []
-  def initialize(multiplayer, last_played_at)
-    super()
-    @multiplayer = multiplayer
-    @last_played_at = last_played_at
+  def initialize(options = {})
+    super(options[:genre], options[:author], options[:source], options[:label], options[:publish_date])
+    @multiplayer = options[:multiplayer]
+    @last_played_at = options[:last_played_at]
     self.class.games << self
   end
 
