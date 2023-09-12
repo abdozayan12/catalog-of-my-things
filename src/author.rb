@@ -42,7 +42,7 @@ class Author
       puts 'No authors available'
     else
       @authors.each_with_index do |author, index|
-        puts "#{index + 1}.#{author.first_name} #{author.last_name}"
+        puts "#{index + 1}. #{author.first_name} #{author.last_name}"
       end
     end
   end
