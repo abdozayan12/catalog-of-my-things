@@ -3,7 +3,8 @@ require 'date'
 
 describe MusicAlbum do
   before :each do
-    @music_album = MusicAlbum.new(true, '2023-09-09')
+    publish_date = Date.parse('2023-09-09')
+    @music_album = MusicAlbum.new(true, publish_date)
   end
 
   it 'is an instance of MusicAlbum' do
@@ -14,7 +15,7 @@ describe MusicAlbum do
     expect(@music_album.id).to be_an(Integer)
   end
 
-  it 'has a on_spotify attribute of type boolean' do
+  it 'has an on_spotify attribute of type boolean' do
     expect(@music_album.on_spotify).to be(true).or be(false)
   end
 
@@ -27,17 +28,17 @@ describe MusicAlbum do
     expect(@music_album.publish_date).to eq(Date.today)
   end
 
-  it 'can add a on_spotify' do
+  it 'can add an on_spotify' do
     @music_album.on_spotify = true
     expect(@music_album.on_spotify).to be(true)
   end
 
-  it 'can add a archived' do
+  it 'can add an archived' do
     @music_album.archived = true
     expect(@music_album.archived).to be(true)
   end
 
-  it 'return true when parents method and on_spotify are true' do
+  it 'returns true when parent method and on_spotify are true' do
     expect(@music_album.can_be_archived?).to be(true)
   end
 end
