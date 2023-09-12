@@ -10,7 +10,8 @@ class Menu
     puts '7 - Add a book'
     puts '8 - Add a music album'
     puts '9 - Add a game'
-    puts '10 = Exit app'
+    puts '10 - Add an author'
+    puts '11 - Exit app'
   end
 
   def user_option
