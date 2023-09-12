@@ -1,4 +1,5 @@
 require_relative 'menu'
+require_relative 'src/author'
 
 menu = Menu.new
 
@@ -18,7 +19,7 @@ loop do
   when '5'
     print '5 selected'
   when '6'
-    print '6 selected'
+    Author.list_authors
   when '7'
     print '7 selected'
   when '8'
@@ -26,6 +27,8 @@ loop do
   when '9'
     print '9 selected'
   when '10'
+    Author.add_author
+  when '11'
     print 'Thank you for using this app!'
     break
   end
