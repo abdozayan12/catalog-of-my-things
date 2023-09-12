@@ -1,16 +1,27 @@
 require_relative '../items'
+require 'json'
 
 class MusicAlbum < Items
-  attr_accessor :on_spotify, :archived, :publish_date
+  attr_accessor :on_spotify
 
   def initialize(on_spotify, publish_date)
-    super()
+    super(publish_date)
     @on_spotify = on_spotify
-    @publish_date = publish_date
-    @archived = false
   end
 
   def can_be_archived?
-    !@archived && @on_spotify
+    super && @on_spotify
+  end
+
+  def to_json(*args)
+    {
+      JSON.create_id => self.class.name,
+      'on_spotify' => @on_spotify,
+      'publish_date' => @publish_date
+    }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    new(object['on_spotify'], object['publish_date'])
   end
 end
