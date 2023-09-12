@@ -54,4 +54,28 @@ class App
     end
   end
 
+  def display_all_books
+    if File.exist?('local_db/books.json')
+      books_data = JSON.parse(File.read('local_db/books.json'))
+      puts 'List of books :'
+      books_data.each do |book|
+        puts "ID: #{book['id']}, Publisher: #{book['publisher']}, Cover State: #{book['cover_state']}, Publish Date: #{book['publish_date']}"
+      end
+    else
+      puts 'No books found.'
+    end
+  end
+
+  def display_all_labels
+    if File.exist?('local_db/labels.json')
+      labels_data = JSON.parse(File.read('local_db/labels.json'))
+      puts 'List of labels:'
+      labels_data.each do |label|
+        puts "ID: #{label['id']}, Title: #{label['title']}, Color: #{label['color']}"
+      end
+    else
+      puts 'No labels found.'
+    end
+  end
+
 end

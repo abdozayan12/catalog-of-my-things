@@ -13,7 +13,7 @@ loop do
   menu.display_options
   case menu.user_option
   when '1'
-
+    app.display_all_books
   when '2'
     print '2 selected'
   when '3'
@@ -21,7 +21,7 @@ loop do
   when '4'
     print '4 selected'
   when '5'
-    print '5 selected'
+    app.display_all_labels
   when '6'
     print '6 selected'
   when '7'
