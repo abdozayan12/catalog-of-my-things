@@ -3,7 +3,7 @@ class Label
   attr_accessor :title, :color
 
   @initial_id = 0
-  def initialize(title, color, _items)
+  def initialize(title, color)
     self.class.increment_initial_id
     @id = self.class.access_initial_id
     @title = title
