@@ -18,7 +18,7 @@ class Author
   end
 
   def list_authors
-    @authors.each_with_index do |author, index|
+    self.class.authors.each_with_index do |author, index|
       puts "#{index + 1}.#{author.first_name} #{author.last_name}"
     end
   end
