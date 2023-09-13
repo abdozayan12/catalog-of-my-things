@@ -1,12 +1,9 @@
 require_relative 'items'
 require_relative 'label'
-# require_relative 'modules/store_json'
 require 'json'
 class Book < Items
-  # include StoreJson
   attr_accessor :publisher, :cover_state, :books
 
-  # attr_reader
   @books = []
   @labels = []
   def initialize(publisher, cover_state, publish_date)
