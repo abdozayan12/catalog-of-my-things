@@ -6,7 +6,7 @@ class Label
   attr_accessor :title, :color
 
   # @initial_id = 0
-  def initialize(title, color, id=nil)
+  def initialize(title, color, id = nil)
     # self.class.increment_initial_id
     @id = id
     @title = title
@@ -16,16 +16,13 @@ class Label
 
   def self.save_data_to_json(file_name, data)
     existing_data = []
-    if File.exist?(file_name)
-      existing_data = JSON.parse(File.read(file_name))
-    end
+    existing_data = JSON.parse(File.read(file_name)) if File.exist?(file_name)
 
     combined_data = existing_data + data.map(&:to_hash)
 
-    File.open(file_name, 'w') do |file|
-      file.write(JSON.generate(combined_data))
-    end
+    File.write(file_name, JSON.generate(combined_data))
   end
+
   def self.display_all_labels
     if File.exist?('local_db/labels.json')
       labels_data = JSON.parse(File.read('local_db/labels.json'))
@@ -37,6 +34,7 @@ class Label
       puts 'No labels found.'
     end
   end
+
   def add_item(item)
     @items << item
     item.label = self
@@ -46,7 +44,7 @@ class Label
     {
       id: id,
       title: title,
-      color: color,
+      color: color
       # publish_date: publish_date
       # Add other attributes as needed
     }

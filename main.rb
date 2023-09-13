@@ -3,7 +3,6 @@ require_relative 'src/book'
 
 menu = Menu.new
 
-
 puts 'Welcome to my catalog of things app'
 at_exit do
   Book.save_data_to_json('local_db/books.json', Book.books)
