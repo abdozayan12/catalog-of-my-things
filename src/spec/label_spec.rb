@@ -34,4 +34,20 @@ describe Label do
       end
     end
   end
+
+  describe '.display_all_labels' do
+    context 'when there are labels in the database' do
+      it 'displays a list of labels' do
+        labels = [
+          Label.new('Label 1', 'Red', 1),
+          Label.new('Label 2', 'Blue', 2)
+        ]
+        allow(File).to receive(:exist?).and_return(true)
+        allow(File).to receive(:read).and_return(JSON.generate(labels.map(&:to_hash)))
+        expect { Label.display_all_labels }.to output(/List of labels/).to_stdout
+        expect { Label.display_all_labels }.to output(/Title: Label 1/).to_stdout
+        expect { Label.display_all_labels }.to output(/Title: Label 2/).to_stdout
+      end
+    end
+  end
 end
