@@ -21,8 +21,8 @@ class Author
     puts 'Author added successfully'
   end
 
-  def self.authors
-    @authors
+  class << self
+    attr_reader :authors
   end
 
   def add_item(item)
