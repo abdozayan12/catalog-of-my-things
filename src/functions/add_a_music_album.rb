@@ -1,5 +1,5 @@
-require_relative './add_genre.rb'
-require_relative '../classes/music_album.rb'
+require_relative 'add_genre'
+require_relative '../classes/music_album'
 
 def add_a_music_album
   puts 'On spotify?[y/n]: '
