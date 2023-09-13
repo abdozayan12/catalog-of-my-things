@@ -55,13 +55,26 @@ class Book < Items
     gets.chomp
   end
 
+  def self.label_title_input
+    puts 'Enter label title'
+    gets.chomp
+  end
+
+  def self.label_color_input
+    puts 'Enter label color'
+    gets.chomp
+  end
+
   def self.add_book
     publisher = publisher_input
     cover_state = cover_state_input
     publish_date = publish_date_input
     book = Book.new(publisher, cover_state, publish_date)
     @books << book
-    label = Label.new('Label Title', 'Label Color', book.id)
+    puts 'Create Title'
+    label_title = label_title_input
+    label_color = label_color_input
+    label = Label.new(label_title, label_color, book.id)
     label.add_item(book)
     @labels << label
     book.label = label
