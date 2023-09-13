@@ -42,3 +42,19 @@ CREATE TABLE games (
   multiplayer BOOLEAN,
   last_played DATE,
 );
+
+CREATE TABLE books (
+       id INT GENERATED ALWAYS AS IDENTITY,
+       publisher VARCHAR(255),
+       cover_state VARCHAR(255),
+       publish_date DATE,
+       label_id INT REFERENCES labels(id),
+       PRIMARY KEY(id)
+);
+
+CREATE TABLE labels (
+        id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+        title VARCHAR(255),
+        color VARCHAR(255),
+        items TEXT []
+);
