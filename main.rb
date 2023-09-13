@@ -1,5 +1,7 @@
 require_relative 'menu'
 require_relative 'src/book'
+require_relative 'src/author'
+require_relative 'src/game'
 
 menu = Menu.new
 
@@ -16,20 +18,22 @@ loop do
   when '2'
     print '2 selected'
   when '3'
-    print '3 selected'
+    Game.list_all_games
   when '4'
     print '4 selected'
   when '5'
     Label.display_all_labels
   when '6'
-    print '6 selected'
+    Author.list_authors
   when '7'
     Book.add_book
   when '8'
     print '8 selected'
   when '9'
-    print '9 selected'
+    Game.add_game
   when '10'
+    Author.add_author
+  when '11'
     print 'Thank you for using this app!'
     break
   end
