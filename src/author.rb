@@ -21,6 +21,10 @@ class Author
     puts 'Author added successfully'
   end
 
+  def self.authors
+    @authors
+  end
+
   def add_item(item)
     items << item
     item.author = self
