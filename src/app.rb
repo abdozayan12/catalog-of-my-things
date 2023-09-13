@@ -1,7 +1,7 @@
 require './util/json_storage'
-require_relative './functions/find_music_albums'
-require_relative './functions/find_genres'
-require_relative './functions/add_a_music_album'
+require_relative 'functions/find_music_albums'
+require_relative 'functions/find_genres'
+require_relative 'functions/add_a_music_album'
 
 class App
   def initialize

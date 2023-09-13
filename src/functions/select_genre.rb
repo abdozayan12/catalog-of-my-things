@@ -1,5 +1,5 @@
-require_relative './find_genres'
-require_relative './create_genre'
+require_relative 'find_genres'
+require_relative 'create_genre'
 
 def select_genre
   find_genres
