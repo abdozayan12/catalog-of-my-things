@@ -1,19 +1,19 @@
 require_relative 'menu'
-require_relative 'app'
+require_relative 'src/book'
 
 menu = Menu.new
-app = App.new
+
 
 puts 'Welcome to my catalog of things app'
 at_exit do
-  app.save_data_to_json('local_db/books.json', app.books)
-  app.save_data_to_json('local_db/labels.json', app.labels)
+  Book.save_data_to_json('local_db/books.json', Book.books)
+  Book.save_data_to_json('local_db/labels.json', Book.labels)
 end
 loop do
   menu.display_options
   case menu.user_option
   when '1'
-    app.display_all_books
+    Book.display_all_books
   when '2'
     print '2 selected'
   when '3'
@@ -21,11 +21,11 @@ loop do
   when '4'
     print '4 selected'
   when '5'
-    app.display_all_labels
+    Label.display_all_labels
   when '6'
     print '6 selected'
   when '7'
-    app.add_book
+    Book.add_book
   when '8'
     print '8 selected'
   when '9'

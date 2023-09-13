@@ -1,4 +1,7 @@
+# require_relative 'modules/store_json'
+require 'json'
 class Label
+  # include StoreJson
   attr_reader :id, :items
   attr_accessor :title, :color
 
@@ -11,6 +14,29 @@ class Label
     @items = []
   end
 
+  def self.save_data_to_json(file_name, data)
+    existing_data = []
+    if File.exist?(file_name)
+      existing_data = JSON.parse(File.read(file_name))
+    end
+
+    combined_data = existing_data + data.map(&:to_hash)
+
+    File.open(file_name, 'w') do |file|
+      file.write(JSON.generate(combined_data))
+    end
+  end
+  def self.display_all_labels
+    if File.exist?('local_db/labels.json')
+      labels_data = JSON.parse(File.read('local_db/labels.json'))
+      puts 'List of labels:'
+      labels_data.each do |label|
+        puts "ID: #{label['id']}, Title: #{label['title']}, Color: #{label['color']}"
+      end
+    else
+      puts 'No labels found.'
+    end
+  end
   def add_item(item)
     @items << item
     item.label = self
