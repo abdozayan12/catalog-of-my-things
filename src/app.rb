@@ -4,6 +4,8 @@ require_relative 'functions/find_genres'
 require_relative 'functions/add_a_music_album'
 require_relative 'book'
 require_relative 'label'
+require_relative 'game'
+require_relative 'author'
 
 class App
   def initialize
@@ -37,6 +39,22 @@ class App
     Book.add_book
   end
 
+  def find_authors
+    Author.list_authors
+  end
+
+  def add_a_author
+    Author.add_author
+  end
+
+  def add_a_game
+    Game.add_game
+  end
+
+  def find_games
+    Game.list_all_games
+  end
+
   def display_interactive_console
     puts "\nPlease choose an option by entering a number:
     1.  List all books
@@ -46,8 +64,8 @@ class App
     5.  List all labels
     6.  List all authors
     7.  Add a book
-    8. Add a music album
-    9. Add a author
+    8.  Add a music album
+    9.  Add an author
     10. Add a game
     0.  Exit"
   end
