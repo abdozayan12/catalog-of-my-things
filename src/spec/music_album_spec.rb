@@ -3,7 +3,7 @@ require 'date'
 
 describe MusicAlbum do
   before :each do
-    @music_album = MusicAlbum.new(true, '2023-09-09')
+    @music_album = MusicAlbum.new(true, Date.new(2020 / 0o3 / 0o4))
   end
 
   it 'is an instance of MusicAlbum' do
