@@ -72,39 +72,45 @@ class Book < Items
     labels_data = JSON.parse(File.read('local_db/labels.json'))
     labels = labels_data.map { |label_data| Label.new(label_data['title'], label_data['color'], label_data['id']) }
     label_input = gets.chomp.downcase
-    selected_label = labels.find { |label| label.id.to_s == label_input }
-    selected_label
+    labels.find { |label| label.id.to_s == label_input }
   end
 
   def self.add_book
-    puts 'press 0 to create new label press 1 to select a label'
-    prompt_select = gets.chomp.to_i
-    if prompt_select == 0
-      label_title = label_title_input
-      label_color = label_color_input
-      selected_label = Label.new(label_title, label_color)
-      @labels << selected_label
-    elsif prompt_select == 1
-      selected_label = select_labels
-    else
-      puts 'Invalid input. Please enter 0 to create a new label or 1 to select a label.'
-    end
-    if selected_label
-      puts "Selected Label: #{selected_label}"
-    else
-      puts 'invalid ID please select vaild ID'
-      select_labels
-    end
+    selected_label = select_label
+    return unless selected_label
 
     publisher = publisher_input
     cover_state = cover_state_input
     publish_date = publish_date_input
+
     book = Book.new(publisher, cover_state, publish_date, selected_label.id)
     @books << book
     selected_label.add_item(book)
     book.label = selected_label
 
     puts 'Book created successfully'
+  end
+
+  def self.select_label
+    puts 'Press 0 to create a new label or 1 to select a label:'
+    prompt_select = gets.chomp.to_i
+
+    if prompt_select.zero?
+      create_label
+    elsif prompt_select == 1
+      select_labels
+    else
+      puts 'Invalid input. Please enter 0 to create a new label or 1 to select a label.'
+      nil
+    end
+  end
+
+  def self.create_label
+    label_title = label_title_input
+    label_color = label_color_input
+    selected_label = Label.new(label_title, label_color)
+    @labels << selected_label
+    selected_label
   end
 
   class << self
