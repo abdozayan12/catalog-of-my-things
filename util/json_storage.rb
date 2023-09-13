@@ -2,6 +2,7 @@ require 'json'
 
 class JSONStorage
   def self.save_data(class_name, object)
+    puts object
     File.write("./data/#{class_name}.json", JSON.dump(object))
   end
 
