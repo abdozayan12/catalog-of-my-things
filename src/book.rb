@@ -71,6 +71,7 @@ class Book < Items
     Label.display_all_labels
     labels_data = JSON.parse(File.read('local_db/labels.json'))
     labels = labels_data.map { |label_data| Label.new(label_data['title'], label_data['color'], label_data['id']) }
+    puts 'Enter label ID:'
     label_input = gets.chomp.downcase
     labels.find { |label| label.id.to_s == label_input }
   end
