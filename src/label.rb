@@ -3,7 +3,7 @@ class Label
   attr_reader :id, :items
   attr_accessor :title, :color
 
-  def initialize(title, color, id = nil)
+  def initialize(title, color, id = Random.rand(1...1000))
     @id = id
     @title = title
     @color = color
@@ -12,7 +12,7 @@ class Label
 
   def self.save_data_to_json(file_name, data)
     existing_data = []
-    existing_data = JSON.parse(File.read(file_name)) if File.exist?(file_name)
+    existing_data = JSON.parse(File.read(file_name)) if File.exist?(fiwirle_name)
 
     combined_data = existing_data + data.map(&:to_hash)
 

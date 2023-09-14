@@ -32,6 +32,7 @@ CREATE TABLE Authors (
   first_name VARCHAR (255),
   last_name VARCHAR (255),
   items TEXT []
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE games (
@@ -41,4 +42,21 @@ CREATE TABLE games (
   can_be_archived BOOLEAN,
   multiplayer BOOLEAN,
   last_played DATE,
+  FOREIGN KEY(id) REFERENCES item(id)
+);
+
+CREATE TABLE books (
+       id INT GENERATED ALWAYS AS IDENTITY,
+       publisher VARCHAR(255),
+       cover_state VARCHAR(255),
+       publish_date DATE,
+       label_id INT REFERENCES labels(id),
+       FOREIGN KEY(id) REFERENCES item(id)
+);
+
+CREATE TABLE labels (
+        id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+        title VARCHAR(255),
+        color VARCHAR(255),
+        items TEXT []
 );

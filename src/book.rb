@@ -2,14 +2,15 @@ require_relative 'items'
 require_relative 'label'
 require 'json'
 class Book < Items
-  attr_accessor :publisher, :cover_state, :books
+  attr_accessor :publisher, :cover_state, :books, :label_id
 
   @books = []
   @labels = []
-  def initialize(publisher, cover_state, publish_date)
+  def initialize(publisher, cover_state, publish_date, label_id = nil)
     super(publish_date)
     @publisher = publisher
     @cover_state = cover_state
+    @label_id = label_id
   end
 
   attr_writer :label
@@ -65,21 +66,51 @@ class Book < Items
     gets.chomp
   end
 
+  def self.select_labels
+    puts 'select a label by entering the ID'
+    Label.display_all_labels
+    labels_data = JSON.parse(File.read('local_db/labels.json'))
+    labels = labels_data.map { |label_data| Label.new(label_data['title'], label_data['color'], label_data['id']) }
+    label_input = gets.chomp.downcase
+    labels.find { |label| label.id.to_s == label_input }
+  end
+
   def self.add_book
+    selected_label = select_label
+    return unless selected_label
+
     publisher = publisher_input
     cover_state = cover_state_input
     publish_date = publish_date_input
-    book = Book.new(publisher, cover_state, publish_date)
+
+    book = Book.new(publisher, cover_state, publish_date, selected_label.id)
     @books << book
-    puts 'Create Title'
-    label_title = label_title_input
-    label_color = label_color_input
-    label = Label.new(label_title, label_color, book.id)
-    label.add_item(book)
-    @labels << label
-    book.label = label
+    selected_label.add_item(book)
+    book.label = selected_label
 
     puts 'Book created successfully'
+  end
+
+  def self.select_label
+    puts 'Press 0 to create a new label or 1 to select a label:'
+    prompt_select = gets.chomp.to_i
+
+    if prompt_select.zero?
+      create_label
+    elsif prompt_select == 1
+      select_labels
+    else
+      puts 'Invalid input. Please enter 0 to create a new label or 1 to select a label.'
+      nil
+    end
+  end
+
+  def self.create_label
+    label_title = label_title_input
+    label_color = label_color_input
+    selected_label = Label.new(label_title, label_color)
+    @labels << selected_label
+    selected_label
   end
 
   class << self
@@ -95,7 +126,8 @@ class Book < Items
       id: id,
       publisher: publisher,
       cover_state: cover_state,
-      publish_date: publish_date
+      publish_date: publish_date,
+      label_id: label_id
     }
   end
 end
