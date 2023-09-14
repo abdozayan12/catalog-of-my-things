@@ -17,4 +17,15 @@ describe Game do
   it 'checks that each game has an id attribute' do
     expect(@game1.id).to_not be_nil
   end
+
+  it 'should determine if it can be archived' do
+    eleven_years_ago = Date.today - (11 * 365)
+    game = Game.new(Date.today, 1, eleven_years_ago)
+    expect(game.can_be_archived?).to_not be_truthy
+  end
+
+  it 'should not be archived if less than 10 years old' do
+    game = Game.new(Date.today - (9 * 365), 1, Date.today - 1)
+    expect(game.can_be_archived?).to_not be_falsey
+  end
 end
