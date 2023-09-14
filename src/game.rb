@@ -73,8 +73,8 @@ class Game < Items
   end
 
   def can_be_archived?
-    today = ::Date.today
+    today = Date.today
     year_diff = (today.year - publish_date.year).abs
-    super.can_be_archived && year_diff > 2
+    year_diff > 2
   end
 end
