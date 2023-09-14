@@ -8,7 +8,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
-  <!-- - [🚀 Live Demo ](#-live-demo-) -->
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -51,11 +51,11 @@ In this project, we created a console app that will help you to keep a record of
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ## 🚀 Video Link <a name="live-demo"></a>
+## 🚀 Video Presentation Link <a name="live-demo"></a>
 
-[Link] -->
+See the live presentation <a href="https://drive.google.com/file/d/1S6j9xnWWiDR8zaV0yUrBQ_JGLfBW0l15/view?usp=sharing">here</a>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<ahref="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
