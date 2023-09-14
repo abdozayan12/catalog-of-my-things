@@ -1,4 +1,3 @@
-# c
 <a name="readme-top"></a>
 
 
