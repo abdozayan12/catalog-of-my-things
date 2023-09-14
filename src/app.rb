@@ -55,6 +55,11 @@ class App
     Game.list_all_games
   end
 
+  def exit
+    Book.save_data_to_json('local_db/books.json', Book.books)
+    Book.save_data_to_json('local_db/labels.json', Book.labels)
+  end
+
   def display_interactive_console
     puts "\nPlease choose an option by entering a number:
     1.  List all books
@@ -79,8 +84,6 @@ class App
       option ? send(option) : puts('Invalid input')
       JSONStorage.save_data('music_albums', @music_albums)
       JSONStorage.save_data('genres', @genres)
-      Book.save_data_to_json('local_db/books.json', Book.books)
-      Book.save_data_to_json('local_db/labels.json', Book.labels)
     end
   end
 end
